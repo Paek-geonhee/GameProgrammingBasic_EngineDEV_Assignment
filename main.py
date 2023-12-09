@@ -80,12 +80,12 @@ def main():
     # 적 객체를 생성한다.
     e_points = [Vector2D(pbs, pbs), Vector2D(-pbs, pbs), Vector2D(-pbs, -pbs), Vector2D(pbs, -pbs)]
     enemy_list = [
-                  BoxCollider(200, 200, pbs*2, 2),
+                  BoxCollider(200, 200, pbs*2, 3),
                   BoxCollider(600,600,pbs*2, 2),
-                  BoxCollider(200,600,pbs*2, 2),
+                  BoxCollider(200,600,pbs*2, 3),
                   BoxCollider(600,200,pbs*2, 2),
-                  BoxCollider(300,300,pbs*2, 2),
-                  BoxCollider(100,100,pbs*2, 2)
+                  BoxCollider(300,300,pbs*2, 4),
+                  BoxCollider(100,100,pbs*2, 1)
                   ]
     enemy_list[2].velocity = Vector2D(10, -10)
 

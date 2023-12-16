@@ -22,10 +22,13 @@ class Transform:
 
         self.points = _points
 
-    def Translation(self, dx, dy):
+    def Translation(self, dx, dy, mode = "+"):
         # 지정된 값만큼 위치를 이동시킨다.
 
-        self.position = self.position + Vector2D(dx, dy)
+        if mode == '+':
+            self.position = self.position + Vector2D(dx,dy)
+        elif mode == '=':
+            self.position = Vector2D(dx,dy)
 
     def Move(self, dt):
         # 지정된 속도로 시간 변화량 만큼 이동시킨다.
@@ -38,10 +41,13 @@ class Transform:
         self.scale.x = dx
         self.scale.y = dy
 
-    def Rotation(self, da):
+    def Rotation(self, da, mode = '+'):
         # 오브젝트를 일정 값만큼 회전시킨다.
 
-        self.angle = self.angle + da
+        if mode == '+':
+            self.angle = self.angle + da
+        elif mode == '=':
+            self.angle = da
 
     def transform(self):
         # 경계 포인트를 위치, 스케일, 회전 값에 맞게 조정하고 리스트를 반환한다.
@@ -89,7 +95,7 @@ class CollisionDetection(Transform):
         self.collisionTimer = 0
         self.latelyCollidedObject = None
 
-    def setPosition(self, mode, dx, dy):
+    def setPosition(self, dx, dy, mode = "="):
         # Collider의 위치를 변경한다.
         # + 모드인 경우 포지션을 Translation하고 = 모드인 경우 포지션을 재설정한다.
         # Collider의 위치는 오브젝트의 model coordinate 기준이다.
@@ -104,7 +110,7 @@ class CollisionDetection(Transform):
 
         self.colliderScale = Vector2D(sx, sy)
 
-    def setAngle(self, mode, da):
+    def setAngle(self, da, mode = '='):
         # Collder의 회전 정보를 갱신한다.
         # + 모드인 경우 일정값만큼 회전시키고 = 모드인 경우 회전값을 재설정한다.
 
